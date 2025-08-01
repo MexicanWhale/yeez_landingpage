@@ -1,0 +1,104 @@
+<style>
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 32px;
+    width: auto;
+    max-width: 120px;
+}
+
+.navbar-auth {
+    color: #1f2937;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.navbar-auth:hover {
+    color: #06b6d4;
+}
+
+.page-footer {
+    padding: 24px 16px;
+    border-top: 1px solid #e5e7eb;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-link {
+    font-size: 12px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #374151;
+}
+
+.footer-separator {
+    font-size: 12px;
+    color: #d1d5db;
+}
+
+/* Adjust body padding to account for fixed navbar */
+body.with-navbar {
+    padding-top: 80px;
+}
+</style>
+
+<nav class="navbar" id="main-navbar">
+    <div class="navbar-logo">
+        <img 
+            src="settings/navlogo.png" 
+            alt="YEEZ"
+        />
+    </div>
+    <div>
+        <a href="/auth/login" class="navbar-auth">
+            Login / Sign Up
+        </a>
+    </div>
+</nav>
+
+<footer class="page-footer" id="main-footer">
+    <div class="footer-content">
+        <a href="/privacy" class="footer-link">
+            Privacy Policy
+        </a>
+        <span class="footer-separator">•</span>
+        <a href="/tos" class="footer-link">
+            Terms of Service
+        </a>
+    </div>
+</footer> 

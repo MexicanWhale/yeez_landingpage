@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse - Official Clipping Academy by Yeez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            color: #1a1a1a;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Background Elements for Hero */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+
+        .bg-decoration-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), transparent);
+            top: 40%;
+            left: -150px;
+        }
+
+        .bg-decoration-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02), transparent);
+            bottom: 10%;
+            right: 15%;
+        }
+
+        .bg-decoration-4 {
+            width: 180px;
+            height: 180px;
+            background: #000000;
+            background-image: url('https://i.postimg.cc/25NVXS3y/cuteclipse.png');
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 2%;
+            right: 2%;
+            opacity: 0.6;
+        }
+
+        .bg-decoration-4::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            transform: translate(-50%, -50%);
+            background: 
+                conic-gradient(
+                    from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.1) 10deg,
+                    transparent 20deg,
+                    transparent 40deg,
+                    rgba(255, 255, 255, 0.08) 50deg,
+                    transparent 60deg,
+                    transparent 80deg,
+                    rgba(255, 255, 255, 0.12) 90deg,
+                    transparent 100deg,
+                    transparent 120deg,
+                    rgba(255, 255, 255, 0.06) 130deg,
+                    transparent 140deg,
+                    transparent 160deg,
+                    rgba(255, 255, 255, 0.1) 170deg,
+                    transparent 180deg,
+                    transparent 200deg,
+                    rgba(255, 255, 255, 0.09) 210deg,
+                    transparent 220deg,
+                    transparent 240deg,
+                    rgba(255, 255, 255, 0.07) 250deg,
+                    transparent 260deg,
+                    transparent 280deg,
+                    rgba(255, 255, 255, 0.11) 290deg,
+                    transparent 300deg,
+                    transparent 320deg,
+                    rgba(255, 255, 255, 0.08) 330deg,
+                    transparent 340deg,
+                    transparent 360deg
+                );
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate-rays 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate-rays {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Dramatic Floating Elements */
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #000000;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .dot:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dot:nth-child(2) {
+            top: 40%;
+            right: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .dot:nth-child(3) {
+            bottom: 30%;
+            left: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .dot:nth-child(4) {
+            top: 60%;
+            right: 30%;
+            animation: float 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Hero Section with Black & White Drama */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0 40px;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #f5f5f5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.02) 50%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 4;
+        }
+
+        .hero-text {
+            position: relative;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            padding: 60px;
+            border-radius: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.04),
+                0 8px 32px rgba(0, 0, 0, 0.02);
+        }
+
+        .badge {
+            background: #000000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: #0f172a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .founder {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 32px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            transition: color 0.2s ease;
+        }
+
+        .founder:hover {
+            color: #0f172a;
+        }
+
+        .founder-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: #0f172a;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+        }
+
+        .cta-button::after {
+            content: '→';
+            font-size: 1rem;
+        }
+
+        /* Clean Video Section */
+        .video-container {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Modern Skills Section */
+        .training-section {
+            margin-top: 60px;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .training-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .training-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 32px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0f172a, #374151);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-stat:hover::before {
+            transform: scaleX(1);
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .hero-stat-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 16px;
+            filter: grayscale(0.2);
+        }
+
+        .hero-stat-label {
+            font-size: 1.1rem;
+            color: #0f172a;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Mobile Preview Section */
+        .mobile-preview {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+        }
+
+        .mobile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-badge {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .mobile-text h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: #1e293b;
+        }
+
+        .mobile-text p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .mobile-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        .feature-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #000000, #333333);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* iPhone Mockup */
+        .iphone-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iphone-frame {
+            width: 280px;
+            height: 570px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 45px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .iphone-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #1e293b;
+            border-radius: 12px;
+            z-index: 3;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            border-radius: 37px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .iphone-home-indicator {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px;
+            height: 5px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+            border-radius: 20px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1e293b;
+        }
+
+        .feature-description {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+            padding: 60px;
+            border-radius: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .author-info {
+            text-align: left;
+        }
+
+        .author-name {
+            font-size: 1.2rem;
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .author-title {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .testimonial-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Modern Final CTA Section */
+        .final-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            background: #ffffff;
+            padding: 60px 70px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .final-cta .section-badge {
+            background: #0f172a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .cta-button-large {
+            background: #0f172a;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button-large:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button-large::after {
+            content: '→';
+            font-size: 1.1rem;
+        }
+
+        .cta-guarantee {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .badge {
+                margin-left: 0;
+            }
+
+            .mobile-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NOTE: Navigation and Asset Handler are automatically provided by yeez.app platform -->
+    
+    <!-- Subtle Background Decorations -->
+    <div class="bg-decoration bg-decoration-2"></div>
+    <div class="bg-decoration bg-decoration-3"></div>
+    <div class="bg-decoration bg-decoration-4"></div>
+
+    <!-- Floating Dots -->
+    <div class="floating-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div style="display: flex; align-items: center; margin-bottom: 32px;">
+                        <logo style="width: 80px; height: 80px; margin-right: 20px; border-radius: 50%; object-fit: cover;"></logo>
+                        <div>
+                            <h1 style="font-size: 3rem; font-weight: 700; line-height: 1.1; margin: 0; color: #0f172a; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -1px;">Eclipse</h1>
+                            <p style="font-size: 1rem; color: #64748b; margin: 0; font-weight: 500;">The Official Clipping Academy of Yeez</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 32px; line-height: 1.7; font-weight: 400;">
+                        Eclipse is a free academy for aspiring content creators and clippers looking to turn their content into profit. Our goal is to create a new creator economy where anyone who has access to a phone can earn money creating content.
+                    </p>
+                    
+                    <div class="cta-container">
+                        <a href="https://yeez.app/auth/signup" class="cta-button">Join Eclipse Academy</a>
+                    </div>
+                </div>
+                <div class="video-column">
+                    <div class="video-container">
+                        <video1 style="width: 100%; height: auto; border-radius: 12px;"></video1>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/ChrisGirbu/" target="_blank" class="founder" style="margin-top: 24px;">
+                        <image2 class="founder-avatar"></image2>
+                        By Chris Girbu - Chief Clipping @Yeez
+                    </a>
+                    
+                    <p style="font-size: 1.1rem; color: #64748b; margin-top: 16px; line-height: 1.7; font-weight: 400;">
+                        Master the art of content clipping and earn $50k+ per month like Chief Clipping & Co-founder did at just 16 years old.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="training-section">
+                <h2 class="training-title">Master Every Skill</h2>
+                <p class="training-subtitle">Eclipse helps you become a top earner with training across all essential content creation disciplines</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-icon">🎬</span>
+                        <div class="hero-stat-label">Video Editor</div>
+                        <div class="hero-stat-desc">Master cutting and storytelling</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-icon">✂️</span>
+                        <div class="hero-stat-label">Content Clipper</div>
+                        <div class="hero-stat-desc">Extract viral moments from long-form content</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-icon">🎨</span>
+                        <div class="hero-stat-label">Creative Designer</div>
+                        <div class="hero-stat-desc">Design thumbnails, graphics, and visuals</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-icon">⚙️</span>
+                        <div class="hero-stat-label">Growth Operator</div>
+                        <div class="hero-stat-desc">Scale operations and maximize earnings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Preview Section -->
+    <section class="mobile-preview">
+        <div class="container">
+            <div class="mobile-content">
+                <div class="mobile-text">
+                    <div class="section-badge">📱 Yeez Campaigns</div>
+                    <h2>Make bank with Eclipse</h2>
+                    <p>Learn how to create viral clips and earn thousands of dollars using the techniques taught in Eclipse Academy.</p>
+                    <div class="mobile-features">
+                        <div class="feature-item">
+                            <span class="feature-check">✓</span>
+                            <span>Step-by-step clipping process</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✓</span>
+                            <span>Yeez campaign access</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✓</span>
+                            <span>Free assets and examples</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✓</span>
+                            <span>Connect with other clippers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-screen">
+                            <video1 style="width: 100%; height: 100%; object-fit: cover; border-radius: 37px;"></video1>
+                        </div>
+                        <div class="iphone-home-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-header">
+                <div class="section-badge">🎯 What You'll Learn</div>
+                <h2 class="section-title">Master Every Aspect of Clipping</h2>
+                <p class="section-subtitle">From basic techniques to advanced monetization strategies, Eclipse covers everything you need to build a profitable clipping business.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3 class="feature-title">Advanced Clipping Techniques</h3>
+                    <p class="feature-description">Learn the exact methods Chris used to create viral clips that generate massive revenue with clipping content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Monetization Strategies</h3>
+                    <p class="feature-description">Discover proven tactics to maximize your earnings per clip, turning content creation into a profitable business.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Scale Your Operation</h3>
+                    <p class="feature-description">Build systems and workflows that allow you to scale from single clips to managing multiple campaigns simultaneously.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Platform Optimization</h3>
+                    <p class="feature-description">Master social algorithms and learn insider tips for getting your content featured and earning maximum exposure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Direct Mentorship</h3>
+                    <p class="feature-description">Get personal guidance from Chris Girbu himself and access to exclusive Yeez partnership opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Analytics & Growth</h3>
+                    <p class="feature-description">Learn to read performance data and optimize your content strategy for consistent growth and higher earnings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-content">
+                <div class="testimonial-quote">
+                    "I went from making $0 to $15k per month in just 3 months with Eclipse. Chris's strategies are game-changing and the Yeez platform integration is incredible."
+                </div>
+                <div class="testimonial-author">
+                    <image3 class="author-avatar" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;"></image3>
+                    <div class="author-info">
+                        <div class="author-name">Jake M.</div>
+                        <div class="author-title">Eclipse Graduate</div>
+                    </div>
+                </div>
+                <div class="testimonial-stats">
+                    <div class="stat">
+                        <span class="stat-number">$15K</span>
+                        <span class="stat-label">Monthly Revenue</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Months to Success</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500%</span>
+                        <span class="stat-label">ROI Increase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="join">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-badge">🚀 Ready to Start?</div>
+                <h2>Ready to Eclipse Your Earnings?</h2>
+                <p>Join the most exclusive clipping academy and learn from the youngest person to make $50k/month in content creation. Limited spots available.</p>
+
+                <a href="https://yeez.app/auth/signup" class="cta-button-large">Join Free Eclipse Academy</a>
+                <p class="cta-guarantee">Completely free access • Join thousands of successful students</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTE: Footer is automatically provided by yeez.app platform -->
+</body>
+</html> 
